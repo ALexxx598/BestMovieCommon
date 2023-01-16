@@ -1,6 +1,6 @@
 <?php
 
-namespace Common\BaseApi;
+namespace BestMovie\Common\BaseApi;
 
 use Illuminate\Support\Facades\Config;
 use Psr\Http\Message\ResponseInterface;

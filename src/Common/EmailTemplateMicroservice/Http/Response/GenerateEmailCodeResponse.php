@@ -1,6 +1,6 @@
 <?php
 
-use Common\BaseApi\BaseResponse\BaseResponse;
+use BestMovie\Common\BaseApi\BaseResponse\BaseResponse;
 use Illuminate\Http\Response;
 
 class GenerateEmailCodeResponse extends BaseResponse

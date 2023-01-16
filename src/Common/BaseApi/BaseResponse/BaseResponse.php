@@ -1,6 +1,6 @@
 <?php
 
-namespace Common\BaseApi\BaseResponse;
+namespace BestMovie\Common\BaseApi\BaseResponse;
 
 use Psr\Http\Message\ResponseInterface;
 

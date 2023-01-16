@@ -1,8 +1,8 @@
 <?php
 
-namespace Common\EmailTemplateMicroservice\Service;
+namespace BestMovie\Common\EmailTemplateMicroservice\Service;
 
-use Common\EmailTemplateMicroservice\Http\EmailTemplateApiInterface;
+use BestMovie\Common\EmailTemplateMicroservice\Http\EmailTemplateApiInterface;
 use GenerateEmailCodeResponse;
 use GuzzleHttp\Exception\GuzzleException;
 

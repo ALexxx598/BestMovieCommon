@@ -1,12 +1,12 @@
 <?php
 
-namespace Common;
+namespace BestMovie\Common;
 
-use Common\BaseApi\HttpClient;
-use Common\EmailTemplateMicroservice\Http\EmailTemplateApi;
-use Common\EmailTemplateMicroservice\Http\EmailTemplateApiInterface;
-use Common\EmailTemplateMicroservice\Service\EmailTemplateService;
-use Common\EmailTemplateMicroservice\Service\EmailTemplateServiceInterface;
+use BestMovie\Common\BaseApi\HttpClient;
+use BestMovie\Common\EmailTemplateMicroservice\Http\EmailTemplateApi;
+use BestMovie\Common\EmailTemplateMicroservice\Http\EmailTemplateApiInterface;
+use BestMovie\Common\EmailTemplateMicroservice\Service\EmailTemplateService;
+use BestMovie\Common\EmailTemplateMicroservice\Service\EmailTemplateServiceInterface;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;

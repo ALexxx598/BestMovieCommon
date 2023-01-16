@@ -22,18 +22,18 @@
     },
     "autoload": {
         "psr-4": {
-            "Common\\": "./src"
+            "BestMovie\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Common\\Tests\\": "./tests"
+            "BestMovie\\Tests\\": "tests/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Common\\EmailTemplateServiceProvider"
+                "BestMovie\\Common\\EmailTemplateServiceProvider"
             ]
         }
     },

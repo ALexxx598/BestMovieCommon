@@ -1,9 +1,8 @@
 <?php
 
-namespace Common\EmailTemplateMicroservice\Http;
+namespace BestMovie\Common\EmailTemplateMicroservice\Http;
 
-use Common\BaseApi\BaseApi;
-use Common\BaseApi\BaseResponse\BaseResponse;
+use BestMovie\Common\BaseApi\BaseApi;
 use GenerateEmailCodeResponse;
 
 class EmailTemplateApi extends BaseApi implements EmailTemplateApiInterface

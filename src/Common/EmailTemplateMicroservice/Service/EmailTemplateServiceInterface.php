@@ -1,6 +1,6 @@
 <?php
 
-namespace Common\EmailTemplateMicroservice\Service;
+namespace BestMovie\Common\EmailTemplateMicroservice\Service;
 
 interface EmailTemplateServiceInterface
 {

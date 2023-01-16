@@ -1,6 +1,6 @@
 <?php
 
-namespace Common\EmailTemplateMicroservice\Http;
+namespace BestMovie\Common\EmailTemplateMicroservice\Http;
 
 use GenerateEmailCodeResponse;
 
