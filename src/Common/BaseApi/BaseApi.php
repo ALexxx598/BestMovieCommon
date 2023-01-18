@@ -51,7 +51,7 @@ class BaseApi
      */
     public function getBaseUrl(): string
     {
-        return $this->getConfig()->get([self::MS_ENV_KEY . '.' . $this->getBaseUrlConfigKey()]);
+        return $this->getConfig()->get(self::MS_ENV_KEY)[$this->getBaseUrlConfigKey()];
     }
 
     /**
@@ -59,7 +59,7 @@ class BaseApi
      */
     public function getMSAuth(): string
     {
-        return $this->getConfig()->get([self::MS_ENV_KEY . '.' . self::MS_AUTH_ENV_KEY]);
+        return $this->getConfig()->get(self::MS_ENV_KEY)[self::MS_AUTH_ENV_KEY];
     }
 
     /**
