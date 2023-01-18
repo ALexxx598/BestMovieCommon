@@ -39,6 +39,9 @@ class EmailTemplateServiceProvider extends ServiceProvider
 
     public function registerEmailTemplateService(): void
     {
-        $this->app->singleton(EmailTemplateServiceInterface::class, EmailTemplateService::class);
+        $this->app->singleton(
+            EmailTemplateServiceInterface::class,
+            EmailTemplateService::class
+        );
     }
 }

@@ -70,4 +70,16 @@ class BaseApi
 
         return $this->getClient()->post($this->getBaseUrl() . $url, $data);
     }
+
+    /**
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function get($url, array $data): ResponseInterface
+    {
+        $data['headers'] = [
+            'MICROSERVICE_AUTH' => $this->getMSAuth(),
+        ];
+
+        return $this->getClient()->get($this->getBaseUrl() . $url, $data);
+    }
 }

@@ -3,8 +3,7 @@
 namespace BestMovie\Common\EmailTemplateMicroservice\Service;
 
 use BestMovie\Common\EmailTemplateMicroservice\Http\EmailTemplateApiInterface;
-use GenerateEmailCodeResponse;
-use GuzzleHttp\Exception\GuzzleException;
+use BestMovie\Common\EmailTemplateMicroservice\Http\Response\GenerateEmailCodeResponse;
 
 class EmailTemplateService implements EmailTemplateServiceInterface
 {
@@ -17,7 +16,7 @@ class EmailTemplateService implements EmailTemplateServiceInterface
     }
 
     /**
-     * @throws GuzzleException
+     * @inheritDoc
      */
     public function generateCode(int $userId, ?int $expireTime = null): GenerateEmailCodeResponse
     {
