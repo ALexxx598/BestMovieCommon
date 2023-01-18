@@ -8,7 +8,7 @@ use BestMovie\Common\EmailTemplateMicroservice\Http\EmailTemplateApiInterface;
 use BestMovie\Common\EmailTemplateMicroservice\Service\EmailTemplateService;
 use BestMovie\Common\EmailTemplateMicroservice\Service\EmailTemplateServiceInterface;
 use Illuminate\Foundation\Application;
-use Illuminate\Support\Facades\Config;
+use Illuminate\Config\Repository as Config;
 use Illuminate\Support\ServiceProvider;
 
 class EmailTemplateServiceProvider extends ServiceProvider

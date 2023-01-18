@@ -2,11 +2,14 @@
 
 namespace BestMovie\Common\BaseApi;
 
-use Illuminate\Support\Facades\Config;
+use Illuminate\Config\Repository as Config;
 use Psr\Http\Message\ResponseInterface;
 
 class BaseApi
 {
+    protected const MS_ENV_KEY = 'bestMovie';
+    protected const MS_AUTH_ENV_KEY = 'MICROSERVICE_AUTH_TOKEN';
+
     /**
      * @param HttpClient $client
      * @param Config $config
@@ -48,7 +51,7 @@ class BaseApi
      */
     public function getBaseUrl(): string
     {
-        return $this->getConfig()[$this->getBaseUrlConfigKey()];
+        return $this->getConfig()->get([self::MS_ENV_KEY . '.' . $this->getBaseUrlConfigKey()]);
     }
 
     /**
@@ -56,7 +59,7 @@ class BaseApi
      */
     public function getMSAuth(): string
     {
-        return $this->getConfig()['MICROSERVICE_AUTH_TOKEN'];
+        return $this->getConfig()->get([self::MS_ENV_KEY . '.' . self::MS_AUTH_ENV_KEY]);
     }
 
     /**
