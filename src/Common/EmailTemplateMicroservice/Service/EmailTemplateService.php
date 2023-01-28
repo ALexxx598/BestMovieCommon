@@ -4,6 +4,7 @@ namespace BestMovie\Common\EmailTemplateMicroservice\Service;
 
 use BestMovie\Common\EmailTemplateMicroservice\Http\EmailTemplateApiInterface;
 use BestMovie\Common\EmailTemplateMicroservice\Http\Response\GenerateEmailCodeResponse;
+use BestMovie\Common\EmailTemplateMicroservice\Http\Response\GetEmailCodeResponse;
 
 class EmailTemplateService implements EmailTemplateServiceInterface
 {
@@ -18,11 +19,21 @@ class EmailTemplateService implements EmailTemplateServiceInterface
     /**
      * @inheritDoc
      */
-    public function generateCode(int $userId, ?int $expireTime = null): GenerateEmailCodeResponse
+    public function generateCode(string $email, ?int $expireTime = null): GenerateEmailCodeResponse
     {
         return $this->emailTemplateApi->generateCode([
-            'user_id' => $userId,
+            'user_email' => $email,
             'expire_time' => $expireTime,
+        ]);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getCode(string $email): GetEmailCodeResponse
+    {
+        return $this->emailTemplateApi->getCode([
+            'user_email' => $email,
         ]);
     }
 }
