@@ -18,6 +18,21 @@ class BaseResponse
     }
 
     /**
+     * @param ResponseInterface $response
+     * @param array|null $responseData
+     * @return static
+     */
+    public static function make(
+        ResponseInterface $response,
+        ?array $responseData = null,
+    ): static {
+        return new static(
+            response: $response,
+            responseData: $responseData
+        );
+    }
+
+    /**
      * @return string
      */
     protected function getResponseContents(): string

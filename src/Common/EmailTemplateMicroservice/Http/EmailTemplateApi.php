@@ -13,8 +13,8 @@ class EmailTemplateApi extends BaseApi implements EmailTemplateApiInterface
      */
     public function generateCode(array $data): GenerateEmailCodeResponse
     {
-        return new GenerateEmailCodeResponse(
-            $this->post('/api/email/code/', $data)
+        return GenerateEmailCodeResponse::make(
+            $this->post('/api/email-codes/', $data)
         );
     }
 
@@ -23,8 +23,8 @@ class EmailTemplateApi extends BaseApi implements EmailTemplateApiInterface
      */
     public function getCode(array $data): GetEmailCodeResponse
     {
-        return new GetEmailCodeResponse(
-            $this->get('/api/email/code/' . $data['user_email'], $data)
+        return GetEmailCodeResponse::make(
+            $this->get('/api/email-codes/', $data)
         );
     }
 }

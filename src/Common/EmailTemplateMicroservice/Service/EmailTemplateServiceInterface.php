@@ -18,8 +18,9 @@ interface EmailTemplateServiceInterface
 
     /**
      * @param string $email
+     * @param int|null $expireTime
      * @return GetEmailCodeResponse
      * @throws GuzzleException
      */
-    public function getCode(string $email): GetEmailCodeResponse;
+    public function getCode(string $email, ?int $expireTime = null): GetEmailCodeResponse;
 }

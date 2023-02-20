@@ -22,18 +22,22 @@ class EmailTemplateService implements EmailTemplateServiceInterface
     public function generateCode(string $email, ?int $expireTime = null): GenerateEmailCodeResponse
     {
         return $this->emailTemplateApi->generateCode([
-            'user_email' => $email,
-            'expire_time' => $expireTime,
+            'form_params' => [
+                'email' => $email,
+                'expire_time' => $expireTime,
+            ]
         ]);
     }
 
     /**
      * @inheritDoc
      */
-    public function getCode(string $email): GetEmailCodeResponse
+    public function getCode(string $email, ?int $expireTime = null): GetEmailCodeResponse
     {
         return $this->emailTemplateApi->getCode([
-            'user_email' => $email,
+            'form_params' => [
+                'email' => $email,
+            ]
         ]);
     }
 }
