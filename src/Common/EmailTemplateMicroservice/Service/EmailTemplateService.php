@@ -35,7 +35,7 @@ class EmailTemplateService implements EmailTemplateServiceInterface
     public function getCode(string $email, ?int $expireTime = null): GetEmailCodeResponse
     {
         return $this->emailTemplateApi->getCode([
-            'form_params' => [
+            'query' => [
                 'email' => $email,
             ]
         ]);
