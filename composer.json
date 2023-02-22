@@ -12,7 +12,6 @@
     "require": {
         "php": "^8.0",
         "guzzlehttp/guzzle": "^7.5",
-        "stechstudio/laravel-jwt": "^1.11",
         "fakerphp/faker": "2.x-dev",
         "phpunit/phpunit": "^9.5.10"
     },
