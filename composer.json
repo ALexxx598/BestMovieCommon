@@ -33,7 +33,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "BestMovie\\Common\\EmailTemplateServiceProvider"
+                "BestMovie\\Common\\EmailTemplateServiceProvider",
+                "BestMovie\\Common\\BestMovieServiceProvider"
             ]
         }
     },

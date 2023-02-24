@@ -67,6 +67,12 @@ class BaseApi
      */
     public function post($url, array $data): ResponseInterface
     {
+        if (array_key_exists('headers', $data)) {
+            $data['headers']['MICROSERVICE_AUTH'] = $this->getMSAuth();
+
+            return $this->getClient()->post($this->getBaseUrl() . $url, $data);
+        }
+
         $data['headers'] = [
             'MICROSERVICE_AUTH' => $this->getMSAuth(),
         ];
@@ -79,6 +85,12 @@ class BaseApi
      */
     public function get($url, array $data): ResponseInterface
     {
+        if (array_key_exists('headers', $data)) {
+            $data['headers']['MICROSERVICE_AUTH'] = $this->getMSAuth();
+
+            return $this->getClient()->get($this->getBaseUrl() . $url, $data);
+        }
+
         $data['headers'] = [
             'MICROSERVICE_AUTH' => $this->getMSAuth(),
         ];
