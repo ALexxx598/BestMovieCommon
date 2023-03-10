@@ -11,6 +11,6 @@ class BestMovieStorageGetPathResponse extends BaseResponse
      */
     public function getPath(): ?string
     {
-        return $this->getData()['path'] ?? null;
+        return $this->getData()['url'] ?? null;
     }
 }
