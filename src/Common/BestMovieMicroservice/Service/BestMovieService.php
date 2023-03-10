@@ -24,6 +24,9 @@ class BestMovieService implements BestMovieServiceInterface
             'form_params' => [
                 'user_id' => $userId,
             ],
+            'query' => [
+                'user_id' => $userId,
+            ]
         ]);
     }
 }

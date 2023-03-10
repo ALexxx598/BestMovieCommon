@@ -34,7 +34,8 @@
         "laravel": {
             "providers": [
                 "BestMovie\\Common\\EmailTemplateServiceProvider",
-                "BestMovie\\Common\\BestMovieServiceProvider"
+                "BestMovie\\Common\\BestMovieServiceProvider",
+                "BestMovie\\Common\\BestMovieStorageServiceProvider"
             ]
         }
     },
