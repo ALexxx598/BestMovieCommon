@@ -2,10 +2,21 @@
 
 namespace BestMovie\Common\BestMovieStorage\Service;
 
+use BestMovie\Common\BaseService\BaseService;
+use BestMovie\Common\BaseService\ProcessHandleType;
 use BestMovie\Common\BestMovieStorage\Http\BestMovieStorageApiInterface;
 
-class BestMovieStorageService implements BestMovieStorageServiceInterface
+class BestMovieStorageService extends BaseService implements BestMovieStorageServiceInterface
 {
+    public const array ALLOWED_PROCESS_HANDLERS = [
+        'validatePath' => [
+            ProcessHandleType::NATIVE_SYNC,
+        ],
+        'getPath' => [
+            ProcessHandleType::NATIVE_SYNC,
+        ],
+    ];
+    
     /**
      * @param BestMovieStorageApiInterface $bestMovieApi
      */
@@ -17,16 +28,16 @@ class BestMovieStorageService implements BestMovieStorageServiceInterface
     /**
      * @inheritDoc
      */
-    public function validatePath(string $path): bool
+    public function validatePath(string $path, ?ProcessHandleType $type = ProcessHandleType::NATIVE_SYNC): bool
     {
-        return $this->bestMovieApi->validatePath($path)->getResult();
+        return $this->bestMovieApi->validatePath($path, $type)->getResult();
     }
 
     /**
      * @inheritDoc
      */
-    public function getPath(string $path): ?string
+    public function getPath(string $path, ?ProcessHandleType $type = ProcessHandleType::NATIVE_SYNC): ?string
     {
-        return $this->bestMovieApi->getPath($path)->getPath();
+        return $this->bestMovieApi->getPath($path, $type)->getPath();
     }
 }

@@ -2,6 +2,7 @@
 
 namespace BestMovie\Common\BaseApi;
 
+use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Config\Repository as Config;
 use Psr\Http\Message\ResponseInterface;
 
@@ -65,7 +66,7 @@ class BaseApi
     /**
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function post($url, array $data): ResponseInterface
+    public function post(string $url, array $data): ResponseInterface
     {
         if (array_key_exists('headers', $data)) {
             $data['headers']['MICROSERVICE_AUTH'] = $this->getMSAuth();
@@ -78,6 +79,26 @@ class BaseApi
         ];
 
         return $this->getClient()->post($this->getBaseUrl() . $url, $data);
+    }
+
+    /**
+     * @param string $url
+     * @param array $data
+     * @return PromiseInterface
+     */
+    public function asyncPost(string $url, array $data): PromiseInterface
+    {
+        if (array_key_exists('headers', $data)) {
+            $data['headers']['MICROSERVICE_AUTH'] = $this->getMSAuth();
+
+            return $this->getClient()->postAsync($this->getBaseUrl() . $url, $data);
+        }
+
+        $data['headers'] = [
+            'MICROSERVICE_AUTH' => $this->getMSAuth(),
+        ];
+
+        return $this->getClient()->postAsync($this->getBaseUrl() . $url, $data);
     }
 
     /**
@@ -96,5 +117,41 @@ class BaseApi
         ];
 
         return $this->getClient()->get($this->getBaseUrl() . $url, $data);
+    }
+
+    /**
+     * @param $url
+     * @param array $data
+     * @return PromiseInterface
+     */
+    public function asyncGet($url, array $data): PromiseInterface
+    {
+        if (array_key_exists('headers', $data)) {
+            $data['headers']['MICROSERVICE_AUTH'] = $this->getMSAuth();
+
+            return $this->getClient()->getAsync($this->getBaseUrl() . $url, $data);
+        }
+
+        $data['headers'] = [
+            'MICROSERVICE_AUTH' => $this->getMSAuth(),
+        ];
+
+        return $this->getClient()->getAsync($this->getBaseUrl() . $url, $data);
+    }
+
+    /**
+     * @param string $name
+     * @param array $arguments
+     * @return void
+     */
+    public function __call(string $name, array $arguments)
+    {
+        if (empty($arguments['type'])) {
+            call_user_func_array([$this, $name], $arguments);
+        }
+
+        $arguments['data']['handle_type'] = $arguments['type'];
+
+        call_user_func_array([$this, 'async' . $name], $arguments);
     }
 }
