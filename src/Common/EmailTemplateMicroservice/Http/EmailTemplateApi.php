@@ -13,20 +13,28 @@ class EmailTemplateApi extends BaseApi implements EmailTemplateApiInterface
     /**
      * @inheritDoc
      */
-    public function generateCode(array $data): GenerateEmailCodeResponse
+    public function generateCode(array $data): GenerateEmailCodeResponse|PromiseInterface
     {
-        return GenerateEmailCodeResponse::make(
-            $this->post('/api/email-codes/', $data)
-        );
+        $result = $this->post('/api/email-codes/', $data);
+
+        if ($result instanceof PromiseInterface) {
+            return $result;
+        }
+
+        return GenerateEmailCodeResponse::make($result);
     }
 
     /**
      * @inheritDoc
      */
-    public function getCode(array $data): GetEmailCodeResponse
+    public function getCode(array $data): GetEmailCodeResponse|PromiseInterface
     {
-        return GetEmailCodeResponse::make(
-            $this->get('/api/email-codes/', $data)
-        );
+        $result = $this->get('/api/email-codes/', $data);
+
+        if ($result instanceof PromiseInterface) {
+            return $result;
+        }
+
+        return GetEmailCodeResponse::make($result);
     }
 }

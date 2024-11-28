@@ -142,16 +142,20 @@ class BaseApi
     /**
      * @param string $name
      * @param array $arguments
-     * @return void
+     * @return mixed
      */
-    public function __call(string $name, array $arguments)
+    public function __call(string $name, array $arguments): mixed
     {
+        if (method_exists($this, $name)) {
+            return call_user_func_array([$this, $name], $arguments);
+        }
+
         if (empty($arguments['type'])) {
-            call_user_func_array([$this, $name], $arguments);
+            return call_user_func_array([$this, $name], $arguments);
         }
 
         $arguments['data']['handle_type'] = $arguments['type'];
 
-        call_user_func_array([$this, 'async' . $name], $arguments);
+        return call_user_func_array([$this, 'async' . $name], $arguments);
     }
 }
